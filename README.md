@@ -45,22 +45,16 @@ A CLI + MCP server that gives AI agents **persistent, queryable memory** — bac
 `Python` `PostgreSQL` `pgvector` `FastMCP` `LSP` `Typer` `Pydantic` `GitHub Actions`
 
 <details>
-<summary>Architecture</summary>
+<summary>Architecture — 16 Mermaid diagrams inside  →  <a href="https://github.com/baobab00/kgn/blob/master/ARCHITECTURE.md">Deep Dive</a></summary>
 <br/>
 
 ```mermaid
-graph TD
-    A[".kgn / .kge files"] --> B["Parser"]
-    B --> C["PostgreSQL + pgvector"]
-    C --> D["Graph Query"]
-    D --> E["Subgraph Extraction"]
-    D --> F["Similarity Search"]
-    C --> G["CLI"]
-    C --> H["MCP Server<br/>(Claude)"]
-    C --> I["LSP Server<br/>(VS Code)"]
-    G --> J["GitHub Sync"]
-    H --> J
-    I --> J
+graph LR
+    A[".kgn / .kge"] --> B["Parser"]
+    B --> C["IngestService"]
+    C --> D[("PostgreSQL + pgvector")]
+    D --> E["CLI · MCP · LSP · Web"]
+    E --> F["Git / GitHub Sync"]
 ```
 
 </details>
